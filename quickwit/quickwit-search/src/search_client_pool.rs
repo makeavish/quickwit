@@ -28,6 +28,7 @@ use anyhow::bail;
 use http::Uri;
 use itertools::Itertools;
 use quickwit_cluster::ClusterMember;
+use quickwit_common::rendezvous_hasher::sort_by_rendez_vous_hash;
 use quickwit_config::service::QuickwitService;
 use quickwit_proto::{tonic, SpanContextInterceptor};
 use tokio_stream::wrappers::WatchStream;
@@ -35,7 +36,6 @@ use tokio_stream::StreamExt;
 use tonic::transport::Endpoint;
 use tracing::*;
 
-use crate::rendezvous_hasher::sort_by_rendez_vous_hash;
 use crate::SearchServiceClient;
 
 /// Create a SearchServiceClient with SocketAddr as an argument.
